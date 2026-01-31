@@ -5,11 +5,19 @@
   
   **Descoperă, salvează și pregătește rețete delicioase cu FlavorHub!**
   
+<<<<<<< HEAD
    [![Flutter](https://img.shields.io/badge/Flutter-3.5.0-02569B?logo=flutter)](https://flutter.dev)
    [![Dart](https://img.shields.io/badge/Dart-3.0-0175C2?logo=dart)](https://dart.dev)
    [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
    [![GitHub repo](https://img.shields.io/badge/GitHub-flavor__hub-black?logo=github)](https://github.com/MosutLarisa/flavor_hub)
 
+=======
+  [![Flutter](https://img.shields.io/badge/Flutter-3.5.0-02569B?logo=flutter)](https://flutter.dev)
+   [![Dart](https://img.shields.io/badge/Dart-3.0-0175C2?logo=dart)](https://dart.dev)
+   [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+   [![GitHub repo](https://img.shields.io/badge/GitHub-flavor__hub-black?logo=github)](https://github.com/MosutLarisa/flavor_hub)
+   
+>>>>>>> 9988ad76618c0acd6672561e86897960d67d559c
 </div>
 
 ---
