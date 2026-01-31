@@ -21,8 +21,7 @@ class RecipeImageHeader extends StatelessWidget {
   }
 }
 
-// ========== WIDGET-URI PRIVATE ==========
-
+/// Imaginea de header a rețetei.
 class _HeaderImage extends StatelessWidget {
   final String image;
 
@@ -39,6 +38,7 @@ class _HeaderImage extends StatelessWidget {
   }
 }
 
+/// Butonul de întoarcere înapoi.
 class _BackButton extends StatelessWidget {
   const _BackButton();
 

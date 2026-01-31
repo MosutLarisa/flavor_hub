@@ -19,70 +19,73 @@ class RecipeDetailsSection extends StatefulWidget {
 }
 
 class _RecipeDetailsSectionState extends State<RecipeDetailsSection> {
-  bool showIngredients = true;
+  var showIngredients = true;
   final favorites = FavoritesProvider();
 
   @override
   Widget build(BuildContext context) {
     final isFavorite = favorites.isFavorite(widget.recipe);
 
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // TITLU
-          Text(
-            widget.recipe.title,
-            style: const TextStyle(
-              fontSize: 26,
-              fontWeight: FontWeight.bold,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            /// TITLU
+            Text(
+              widget.recipe.title,
+              style: const TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 0.5,
+              ),
             ),
-          ),
 
-          const SizedBox(height: 12),
+            const SizedBox(height: 16),
 
-          // BUTOANE
-          _ActionButtons(
-            isFavorite: isFavorite,
-            recipe: widget.recipe,
-            onFavoritePressed: _toggleFavorite,
-          ),
-
-          const SizedBox(height: 12),
-
-          // DESCRIERE
-          Text(
-            widget.recipe.description,
-            style: TextStyle(
-              fontSize: 15,
-              color: Colors.grey.shade700,
-              height: 1.5,
+            /// BUTOANE
+            _ActionButtons(
+              isFavorite: isFavorite,
+              recipe: widget.recipe,
+              onFavoritePressed: _toggleFavorite,
             ),
-          ),
 
-          const SizedBox(height: 20),
+            const SizedBox(height: 20),
 
-          // INFO
-          _InfoRow(
-            time: widget.recipe.time,
-            difficulty: widget.recipe.difficulty,
-          ),
+            /// DESCRIERE
+            Text(
+              widget.recipe.description,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey.shade700,
+                height: 1.6,
+              ),
+            ),
 
-          const SizedBox(height: 24),
+            const SizedBox(height: 24),
 
-          // INGREDIENTE
-          _IngredientsSection(
-            ingredients: widget.recipe.ingredients,
-            showIngredients: showIngredients,
-            onToggle: () => setState(() => showIngredients = !showIngredients),
-          ),
+            /// INFO
+            _InfoRow(
+              time: widget.recipe.time,
+              difficulty: widget.recipe.difficulty,
+            ),
 
-          const SizedBox(height: 24),
+            const SizedBox(height: 28),
 
-          // PAȘI
-          _StepsSection(steps: widget.recipe.steps),
-        ],
+            /// INGREDIENTE
+            _IngredientsSection(
+              ingredients: widget.recipe.ingredients,
+              showIngredients: showIngredients,
+              onToggle: () => setState(() => showIngredients = !showIngredients),
+            ),
+
+            const SizedBox(height: 28),
+
+            /// PAȘI
+            _StepsSection(steps: widget.recipe.steps),
+          ],
+        ),
       ),
     );
   }
@@ -111,7 +114,6 @@ class _ActionButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // FAVORITE
         Expanded(
           child: ElevatedButton.icon(
             onPressed: onFavoritePressed,
@@ -120,31 +122,28 @@ class _ActionButtons extends StatelessWidget {
               isFavorite ? AppStrings.savedToFavorites : AppStrings.saveToFavorites,
             ),
             style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
               backgroundColor: isFavorite ? Colors.red : Colors.grey.shade200,
               foregroundColor: isFavorite ? Colors.white : Colors.black87,
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
             ),
           ),
         ),
-
-        const SizedBox(width: 12),
-
-        // SHARE
+        const SizedBox(width: 14),
         Expanded(
           child: ElevatedButton.icon(
             onPressed: () => _showShareOptions(context, recipe),
             icon: const Icon(Icons.share),
             label: const Text(AppStrings.shareButton),
             style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
               backgroundColor: Colors.orange,
               foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
             ),
           ),
         ),
@@ -152,6 +151,7 @@ class _ActionButtons extends StatelessWidget {
     );
   }
 
+  /// Afișează opțiunile de partajare într-un bottom sheet.
   void _showShareOptions(BuildContext context, Recipe recipe) {
     showModalBottomSheet(
       context: context,
@@ -199,6 +199,7 @@ class _ActionButtons extends StatelessWidget {
   }
 }
 
+/// Rândul cu informații despre timp și dificultate.
 class _InfoRow extends StatelessWidget {
   final int time;
   final String difficulty;
@@ -228,6 +229,7 @@ class _InfoRow extends StatelessWidget {
   }
 }
 
+/// Chip pentru afișarea unei informații cu iconiță.
 class _InfoChip extends StatelessWidget {
   final IconData icon;
   final String text;
@@ -242,21 +244,19 @@ class _InfoChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
+        // ignore: deprecated_member_use
         color: color.withOpacity(0.15),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: color, width: 1.5),
+        borderRadius: BorderRadius.circular(30),
       ),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
         children: [
           Icon(icon, size: 18, color: color),
-          const SizedBox(width: 6),
+          const SizedBox(width: 8),
           Text(
             text,
             style: TextStyle(
-              fontSize: 14,
               fontWeight: FontWeight.w600,
               color: color,
             ),
@@ -267,6 +267,7 @@ class _InfoChip extends StatelessWidget {
   }
 }
 
+/// Secțiunea cu ingrediente.
 class _IngredientsSection extends StatelessWidget {
   final List<String> ingredients;
   final bool showIngredients;
@@ -280,45 +281,57 @@ class _IngredientsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              AppStrings.ingredientsTitle,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            TextButton(
-              onPressed: onToggle,
-              child: Text(
-                showIngredients ? AppStrings.hideIngredients : AppStrings.showIngredients,
-                style: const TextStyle(color: Colors.orange),
+    return Container(
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        color: Colors.orange.shade50,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                AppStrings.ingredientsTitle,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              TextButton(
+                onPressed: onToggle,
+                child: Text(
+                  showIngredients ? AppStrings.hideIngredients : AppStrings.showIngredients,
+                ),
+              ),
+            ],
+          ),
+          if (showIngredients) ...[
+            const SizedBox(height: 10),
+            ...ingredients.map(
+              (ing) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6),
+                child: Row(
+                  children: [
+                    const Icon(Icons.check_circle, color: Colors.orange, size: 20),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        ing,
+                        style: const TextStyle(fontSize: 15),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
-        ),
-        if (showIngredients) ...[
-          const SizedBox(height: 8),
-          ...ingredients.map(
-            (ing) => Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              child: Row(
-                children: [
-                  const Icon(Icons.check_circle, color: Colors.orange, size: 20),
-                  const SizedBox(width: 10),
-                  Expanded(child: Text(ing, style: const TextStyle(fontSize: 15))),
-                ],
-              ),
-            ),
-          ),
         ],
-      ],
+      ),
     );
   }
 }
 
+/// Secțiunea cu pașii rețetei.
 class _StepsSection extends StatelessWidget {
   final List<String> steps;
 
@@ -331,20 +344,28 @@ class _StepsSection extends StatelessWidget {
       children: [
         const Text(
           AppStrings.stepsTitle,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 16),
         ...steps.asMap().entries.map((entry) {
           return Container(
-            margin: const EdgeInsets.only(bottom: 12),
-            padding: const EdgeInsets.all(14),
+            margin: const EdgeInsets.only(bottom: 14),
+            padding: const EdgeInsets.all(18),
             decoration: BoxDecoration(
-              color: const Color(0xFFF8F8F8),
-              borderRadius: BorderRadius.circular(16),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(18),
+              boxShadow: [
+                BoxShadow(
+                  // ignore: deprecated_member_use
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 10,
+                  offset: const Offset(0, 6),
+                ),
+              ],
             ),
             child: Text(
               '${entry.key + 1}. ${entry.value}',
-              style: const TextStyle(fontSize: 14, height: 1.5),
+              style: const TextStyle(fontSize: 15, height: 1.6),
             ),
           );
         }),

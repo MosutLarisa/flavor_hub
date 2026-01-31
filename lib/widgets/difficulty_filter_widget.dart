@@ -52,6 +52,10 @@ class DifficultyFilterWidget extends StatelessWidget {
     );
   }
 
+  /// Construiește un chip pentru filtrul de dificultate.
+  /// [value] - valoarea dificultății (sau null pentru toate)
+  /// [label] - eticheta afișată pe chip
+  /// [color] - culoarea asociată dificultății
   Widget _buildChip(String? value, String label, Color color) {
     final isSelected = selectedDifficulty == value;
 
@@ -59,6 +63,7 @@ class DifficultyFilterWidget extends StatelessWidget {
       label: Text(label),
       selected: isSelected,
       onSelected: (_) => onSelected(value),
+      // ignore: deprecated_member_use
       selectedColor: color.withOpacity(0.2),
       backgroundColor: Colors.grey.shade100,
       checkmarkColor: color,

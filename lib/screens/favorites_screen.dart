@@ -1,13 +1,9 @@
-import 'package:flavor_hub/models/recipe.dart';
 import 'package:flutter/material.dart';
+import 'package:flavor_hub/models/recipe.dart';
 import '../common/strings.dart';
 import '../providers/favorites_provider.dart';
 import '../widgets/recipe_card.dart';
 
-/// Ecranul cu rețetele favorite.
-///
-/// Afișează lista de favorite din FavoritesProvider.
-/// Se actualizează automat când adaugi/ștergi favorite.
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
 
@@ -16,29 +12,50 @@ class FavoritesScreen extends StatefulWidget {
 }
 
 class _FavoritesScreenState extends State<FavoritesScreen> {
-  final favorites = FavoritesProvider();
+  final favoritesProvider = FavoritesProvider();
 
   @override
   Widget build(BuildContext context) {
+    final favorites = favoritesProvider.favorites;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppStrings.favoritesTitle),
-        backgroundColor: Colors.orange,
+        elevation: 0,
         foregroundColor: Colors.white,
-      ),
-      body: favorites.favorites.isEmpty
-          ? const _EmptyFavoritesMessage()
-          : _FavoritesList(
-              recipes: favorites.favorites,
-              favorites: favorites.favorites,
+        title: const Text(
+          AppStrings.favoritesTitle,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFFEC407A),
+                Color(0xFFD81B60),
+              ],
             ),
+          ),
+        ),
+      ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFFFCE4EC),
+              Color(0xFFFFEBEE),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: favorites.isEmpty
+            ? const _EmptyFavoritesMessage()
+            : _FavoritesList(favorites: favorites),
+      ),
     );
   }
 }
 
-// ========== WIDGET-URI PRIVATE ==========
-
-/// Mesaj când nu există favorite.
 class _EmptyFavoritesMessage extends StatelessWidget {
   const _EmptyFavoritesMessage();
 
@@ -48,17 +65,39 @@ class _EmptyFavoritesMessage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.favorite_border,
-            size: 80,
-            color: Colors.grey.shade300,
+          Container(
+            width: 120,
+            height: 120,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                colors: [
+                  Colors.pink.shade200,
+                  Colors.red.shade300,
+                ],
+              ),
+              boxShadow: [
+                BoxShadow(
+                  // ignore: deprecated_member_use
+                  color: Colors.pink.withOpacity(0.3),
+                  blurRadius: 20,
+                  offset: const Offset(0, 8),
+                ),
+              ],
+            ),
+            child: const Icon(
+              Icons.favorite_border,
+              size: 56,
+              color: Colors.white,
+            ),
           ),
-          const SizedBox(height: 16),
-          Text(
+          const SizedBox(height: 20),
+          const Text(
             AppStrings.noFavorites,
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
-              color: Colors.grey.shade600,
+              color: Colors.grey,
             ),
           ),
         ],
@@ -67,19 +106,21 @@ class _EmptyFavoritesMessage extends StatelessWidget {
   }
 }
 
-/// Lista de rețete favorite.
 class _FavoritesList extends StatelessWidget {
-  final List favorites;
+  final List<Recipe> favorites;
 
-  const _FavoritesList({required this.favorites, required List<Recipe> recipes});
+  const _FavoritesList({required this.favorites});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       itemCount: favorites.length,
       itemBuilder: (context, index) {
-        return RecipeCard(recipe: favorites[index]);
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 14),
+          child: RecipeCard(recipe: favorites[index]),
+        );
       },
     );
   }

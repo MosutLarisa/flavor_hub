@@ -5,44 +5,34 @@ import 'sweet_recipes_screen.dart';
 import 'savory_recipes_screen.dart';
 import 'favorites_screen.dart';
 
-/// Ecranul de bun venit - primul ecran al aplicației.
-///
-/// **Design:**
-/// - Fundal alb (consistent cu restul aplicației)
-/// - Logo/titlu portocaliu (brand color)
-/// - 3 carduri mari pentru navigare:
-///   1. Rețete Dulci (fundal portocaliu deschis)
-///   2. Rețete Sărate (fundal verde deschis)
-///   3. Favorite (fundal roșu deschis)
-///
-/// **Navigare:**
-/// Fiecare card deschide un ecran separat (nu mai există navigare între dulce/sărat).
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(24),
-          child: Column(
-            children: [
-              SizedBox(height: 40),
-
-              // HEADER
-              _WelcomeHeader(),
-
-              SizedBox(height: 60),
-
-              // CARDURI DE NAVIGARE
-              Expanded(
-                child: _NavigationCards(),
-              ),
-
-              SizedBox(height: 20),
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFFFFF3E0),
+              Color(0xFFE8F5E9),
             ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: const SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(24),
+            child: Column(
+              children: [
+                SizedBox(height: 30),
+                _WelcomeHeader(),
+                SizedBox(height: 50),
+                Expanded(child: _NavigationCards()),
+              ],
+            ),
           ),
         ),
       ),
@@ -50,9 +40,6 @@ class WelcomeScreen extends StatelessWidget {
   }
 }
 
-// ========== WIDGET-URI PRIVATE ==========
-
-/// Header cu logo și mesaj de bun venit.
 class _WelcomeHeader extends StatelessWidget {
   const _WelcomeHeader();
 
@@ -60,42 +47,50 @@ class _WelcomeHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // LOGO/EMOJI
         Container(
-          width: 100,
-          height: 100,
+          width: 120,
+          height: 120,
           decoration: BoxDecoration(
-            color: Colors.orange.shade50,
             shape: BoxShape.circle,
+            gradient: LinearGradient(
+              colors: [
+                Colors.orange.shade300,
+                Colors.deepOrange.shade400,
+              ],
+            ),
+            boxShadow: [
+              BoxShadow(
+                // ignore: deprecated_member_use
+                color: Colors.orange.withOpacity(0.4),
+                blurRadius: 20,
+                offset: const Offset(0, 8),
+              ),
+            ],
           ),
           child: const Center(
             child: Text(
-              '🍳',
-              style: TextStyle(fontSize: 50),
+              '🔥',
+              style: TextStyle(fontSize: 56),
             ),
           ),
         ),
-
-        const SizedBox(height: 20),
-
-        // TITLU
+        const SizedBox(height: 24),
         const Text(
           AppStrings.appTitle,
           style: TextStyle(
-            fontSize: 36,
-            fontWeight: FontWeight.bold,
-            color: Colors.orange,
+            fontSize: 38,
+            fontWeight: FontWeight.w900,
+            color: Colors.deepOrange,
+            letterSpacing: 1.2,
           ),
         ),
-
-        const SizedBox(height: 8),
-
-        // SUBTITLU
+        const SizedBox(height: 10),
         Text(
           AppStrings.welcomeSubtitle,
+          textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 16,
-            color: Colors.grey.shade600,
+            color: Colors.grey.shade700,
           ),
         ),
       ],
@@ -103,7 +98,6 @@ class _WelcomeHeader extends StatelessWidget {
   }
 }
 
-/// Container cu cele 3 carduri de navigare.
 class _NavigationCards extends StatelessWidget {
   const _NavigationCards();
 
@@ -112,13 +106,14 @@ class _NavigationCards extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // CARD REȚETE DULCI
         _NavigationCard(
           title: AppStrings.sweetCategory,
           description: AppStrings.sweetDescription,
-          icon: Icons.cake,
-          backgroundColor: Colors.orange.shade50,
-          iconColor: Colors.orange,
+          icon: Icons.cake_rounded,
+          gradientColors: [
+            Colors.orange.shade300,
+            Colors.deepOrange.shade400,
+          ],
           onTap: () {
             NavigationHelper.navigateToScreen(
               context,
@@ -126,16 +121,15 @@ class _NavigationCards extends StatelessWidget {
             );
           },
         ),
-
-        const SizedBox(height: 16),
-
-        // CARD REȚETE SĂRATE
+        const SizedBox(height: 18),
         _NavigationCard(
           title: AppStrings.savoryCategory,
           description: AppStrings.savoryDescription,
-          icon: Icons.restaurant,
-          backgroundColor: Colors.green.shade50,
-          iconColor: Colors.green,
+          icon: Icons.restaurant_menu_rounded,
+          gradientColors: [
+            Colors.green.shade300,
+            Colors.teal.shade400,
+          ],
           onTap: () {
             NavigationHelper.navigateToScreen(
               context,
@@ -143,16 +137,15 @@ class _NavigationCards extends StatelessWidget {
             );
           },
         ),
-
-        const SizedBox(height: 16),
-
-        // CARD FAVORITE
+        const SizedBox(height: 18),
         _NavigationCard(
           title: AppStrings.favoritesTitle,
           description: AppStrings.favoritesDescription,
-          icon: Icons.favorite,
-          backgroundColor: Colors.red.shade50,
-          iconColor: Colors.red,
+          icon: Icons.favorite_rounded,
+          gradientColors: [
+            Colors.pink.shade300,
+            Colors.red.shade400,
+          ],
           onTap: () {
             NavigationHelper.navigateToScreen(
               context,
@@ -165,82 +158,84 @@ class _NavigationCards extends StatelessWidget {
   }
 }
 
-/// Card individual pentru fiecare opțiune.
 class _NavigationCard extends StatelessWidget {
   final String title;
   final String description;
   final IconData icon;
-  final Color backgroundColor;
-  final Color iconColor;
+  final List<Color> gradientColors;
   final VoidCallback onTap;
 
   const _NavigationCard({
     required this.title,
     required this.description,
     required this.icon,
-    required this.backgroundColor,
-    required this.iconColor,
+    required this.gradientColors,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      borderRadius: BorderRadius.circular(20),
       onTap: onTap,
       child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(22),
         decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius: BorderRadius.circular(16),
-          // ignore: deprecated_member_use
-          border: Border.all(color: iconColor.withOpacity(0.3), width: 2),
+          gradient: LinearGradient(
+            colors: gradientColors,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              // ignore: deprecated_member_use
+              color: gradientColors.last.withOpacity(0.4),
+              blurRadius: 18,
+              offset: const Offset(0, 8),
+            ),
+          ],
         ),
         child: Row(
           children: [
-            // ICONIȚA
             Container(
-              width: 60,
-              height: 60,
+              width: 64,
+              height: 64,
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
+                // ignore: deprecated_member_use
+                color: Colors.white.withOpacity(0.25),
+                borderRadius: BorderRadius.circular(16),
               ),
-              child: Icon(icon, size: 32, color: iconColor),
+              child: Icon(icon, size: 34, color: Colors.white),
             ),
-
-            const SizedBox(width: 16),
-
-            // TEXT
+            const SizedBox(width: 18),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: TextStyle(
-                      fontSize: 20,
+                    style: const TextStyle(
+                      fontSize: 22,
                       fontWeight: FontWeight.bold,
-                      color: iconColor,
+                      color: Colors.white,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 6),
                   Text(
                     description,
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.grey.shade700,
+                      // ignore: deprecated_member_use
+                      color: Colors.white.withOpacity(0.9),
                     ),
                   ),
                 ],
               ),
             ),
-
-            // SĂGEATĂ
-            Icon(
+            const Icon(
               Icons.arrow_forward_ios,
-              // ignore: deprecated_member_use
-              color: iconColor.withOpacity(0.5),
+              color: Colors.white,
               size: 20,
             ),
           ],

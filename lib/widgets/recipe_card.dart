@@ -49,8 +49,7 @@ class RecipeCard extends StatelessWidget {
   }
 }
 
-// ========== WIDGET-URI PRIVATE ==========
-
+/// Fundalul imaginii rețetei.
 class _ImageBackground extends StatelessWidget {
   final String image;
 
@@ -67,6 +66,7 @@ class _ImageBackground extends StatelessWidget {
   }
 }
 
+/// Gradient întunecat peste imagine pentru a îmbunătăți lizibilitatea textului.
 class _DarkGradient extends StatelessWidget {
   const _DarkGradient();
 
@@ -89,6 +89,7 @@ class _DarkGradient extends StatelessWidget {
   }
 }
 
+/// Titlul rețetei afișat peste imagine.
 class _RecipeTitle extends StatelessWidget {
   final String title;
 

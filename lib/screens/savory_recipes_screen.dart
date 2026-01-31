@@ -6,16 +6,6 @@ import '../widgets/recipe_card.dart';
 import '../widgets/search_bar_widget.dart';
 import '../widgets/difficulty_filter_widget.dart';
 
-/// Ecran cu rețetele SĂRATE.
-///
-/// **Funcționalități:**
-/// - Afișează doar rețetele din categoria sărat
-/// - Căutare după titlu
-/// - Filtru după dificultate
-///
-/// **Navigare:**
-/// - Are buton "Înapoi" în AppBar
-/// - NU are navigare către rețete dulci
 class SavoryRecipesScreen extends StatefulWidget {
   const SavoryRecipesScreen({super.key});
 
@@ -27,16 +17,12 @@ class _SavoryRecipesScreenState extends State<SavoryRecipesScreen> {
   var searchQuery = '';
   String? selectedDifficulty;
 
-  /// Filtrează rețetele sărate după căutare și dificultate.
   List<Recipe> get filteredRecipes {
     return recipes.where((recipe) {
-      // Doar rețete sărate
       if (recipe.category != RecipeCategory.sarat) return false;
 
-      // Verifică căutarea
       final matchesSearch = recipe.title.toLowerCase().contains(searchQuery.toLowerCase());
 
-      // Verifică dificultatea
       final matchesDifficulty =
           selectedDifficulty == null || recipe.difficulty == selectedDifficulty;
 
@@ -48,36 +34,81 @@ class _SavoryRecipesScreenState extends State<SavoryRecipesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppStrings.savoryRecipesTitle),
-        backgroundColor: Colors.orange,
+        elevation: 0,
         foregroundColor: Colors.white,
+        title: const Text(
+          AppStrings.savoryRecipesTitle,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFF66BB6A),
+                Color(0xFF26A69A),
+              ],
+            ),
+          ),
+        ),
       ),
-      body: Column(
-        children: [
-          // BARA DE CĂUTARE
-          SearchBarWidget(
-            onChanged: (value) => setState(() => searchQuery = value),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFFE8F5E9),
+              Color(0xFFE0F2F1),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
+        ),
+        child: Column(
+          children: [
+            const SizedBox(height: 16),
 
-          // FILTRU DIFICULTATE
-          DifficultyFilterWidget(
-            selectedDifficulty: selectedDifficulty,
-            onSelected: (value) => setState(() => selectedDifficulty = value),
-          ),
+            /// SEARCH + FILTER
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              //padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    // ignore: deprecated_member_use
+                    color: Colors.green.withOpacity(0.25),
+                    blurRadius: 16,
+                    offset: const Offset(0, 8),
+                  ),
+                ],
+              ),
+              child: Column(
+                children: [
+                  SearchBarWidget(
+                    onChanged: (value) => setState(() => searchQuery = value),
+                  ),
+                  const SizedBox(height: 12),
+                  DifficultyFilterWidget(
+                    selectedDifficulty: selectedDifficulty,
+                    onSelected: (value) => setState(() => selectedDifficulty = value),
+                  ),
+                ],
+              ),
+            ),
 
-          // LISTA DE REȚETE
-          Expanded(
-            child: _RecipesList(recipes: filteredRecipes),
-          ),
-        ],
+            const SizedBox(height: 16),
+
+            /// LISTA REȚETE
+            Expanded(
+              child: _RecipesList(recipes: filteredRecipes),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-// ========== WIDGET PRIVAT ==========
-
-/// Lista de rețete sau mesaj dacă e goală.
 class _RecipesList extends StatelessWidget {
   final List<Recipe> recipes;
 
@@ -87,18 +118,34 @@ class _RecipesList extends StatelessWidget {
   Widget build(BuildContext context) {
     if (recipes.isEmpty) {
       return const Center(
-        child: Text(
-          AppStrings.noResults,
-          style: TextStyle(fontSize: 16, color: Colors.grey),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              '🥗',
+              style: TextStyle(fontSize: 60),
+            ),
+            SizedBox(height: 12),
+            Text(
+              AppStrings.noResults,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+              ),
+            ),
+          ],
         ),
       );
     }
 
     return ListView.builder(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       itemCount: recipes.length,
       itemBuilder: (context, index) {
-        return RecipeCard(recipe: recipes[index]);
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 14),
+          child: RecipeCard(recipe: recipes[index]),
+        );
       },
     );
   }
