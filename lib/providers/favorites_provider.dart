@@ -12,7 +12,7 @@ import '../models/recipe.dart';
 /// - Încarcă favoritele la pornirea aplicației
 ///
 /// **De ce Singleton?**
-/// Vrem aceeași listă de favorite în toată aplicația,
+/// Vrem aceeași liste de favorite în toată aplicația,
 /// nu câte o copie diferită în fiecare ecran.
 class FavoritesProvider {
   // ========== SINGLETON PATTERN ==========
@@ -33,7 +33,7 @@ class FavoritesProvider {
   /// Lista internă cu rețetele favorite
   final List<Recipe> _favorites = [];
 
-  /// Getter public: permite accesul la listă (doar citire)
+  /// Getter public: permite accesul la liste (doar citire)
   List<Recipe> get favorites => _favorites;
 
   // ========== METODE PUBLICE ==========
@@ -63,6 +63,7 @@ class FavoritesProvider {
   /// Salvează lista de favorite pe dispozitiv.
   ///
   /// Transformă fiecare Recipe în JSON și salvează în SharedPreferences.
+  /// Includ și câmpul `allergens` pentru a-l salva corect.
   Future<void> saveFavorites() async {
     final prefs = await SharedPreferences.getInstance();
 
@@ -77,6 +78,7 @@ class FavoritesProvider {
             'ingredients': r.ingredients,
             'steps': r.steps,
             'category': r.category.index, // Enum → număr (0 sau 1)
+            'allergens': r.allergens, // Lista de alergeni
           }),
         )
         .toList();
@@ -87,6 +89,7 @@ class FavoritesProvider {
   /// Încarcă lista de favorite de pe dispozitiv.
   ///
   /// Se apelează automat la pornirea aplicației.
+  /// Recreierea câmpului `allergens` din JSON salvat.
   Future<void> loadFavorites() async {
     final prefs = await SharedPreferences.getInstance();
     final data = prefs.getStringList('favorites');
@@ -108,6 +111,9 @@ class FavoritesProvider {
           ingredients: List<String>.from(map['ingredients']),
           steps: List<String>.from(map['steps']),
           category: RecipeCategory.values[map['category'] ?? 0],
+          // Încărcăm alergenii; dacă nu există în date (compatibilitate),
+          // folosim liste goală
+          allergens: map.containsKey('allergens') ? List<String>.from(map['allergens']) : [],
         ),
       );
     }

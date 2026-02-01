@@ -2,9 +2,10 @@
 ///
 /// Conține toate string-urile aplicației organizate pe secțiuni logice:
 /// - Titluri și mesaje generale
+/// - Ecran de pornire (intro)
 /// - Navigare și categorii
 /// - Căutare și filtre
-/// - Detalii rețete
+/// - Detalii rețete (inclusiv alergeni)
 /// - Share și favorite
 ///
 /// **Scop:** Evitarea hardcodării textelor direct în widget-uri.
@@ -18,13 +19,30 @@ class AppStrings {
   /// Mesaj când nu există rezultate după căutare/filtrare
   static const noResults = 'Nu există rezultate';
 
-  /// Mesaj când o listă este goală
+  /// Mesaj când o liste este goală
   static const emptyList = 'Lista este goală';
 
-  // ========== ECRAN WELCOME ==========
+  // ========== ECRAN INTRO ==========
+  static const introWelcomeTitle = 'Bun venit în FlavorHub!';
+  static const introWelcomeMessage = 'Descoperă rețete delicioase pentru orice ocazie.';
+  static const introAllergenTitle = '⚠️ Atenție la alergeni';
+  static const introAllergenMessage =
+      'Fiecare rețetă afișează alergenii pe care îi conține. '
+      'Verificați întotdeauna ingredientele înainte de a pregăti o rețetă.';
+  static const introStartButton = 'Continuă...';
 
-  /// Subtitlul de pe ecranul de bun venit
+  /// Label-ul câmpului de nama pe intro
+  static const introNameHint = 'Numele tău';
+
+  // ========== ECRAN WELCOME ==========
   static const welcomeSubtitle = 'Descoperă rețete delicioase';
+
+  /// Mesaj personalizat dacă utilizatorul a intrat nama
+  /// Folosim un format string — '{name}' se înlocuiește în cod
+  static const welcomePersonalGreeting = 'Salut, {name}! 👋';
+
+  /// Mesaj default dacă utilizatorul NU a intrat nama
+  static const welcomeDefaultGreeting = 'Salut! 👋';
 
   /// Descrierea pentru categoria dulce
   static const sweetDescription = 'Deserturi și prăjituri';
@@ -62,6 +80,7 @@ class AppStrings {
 
   /// Text pentru butonul când rețeta este deja salvată
   static const savedToFavorites = 'Salvat';
+
   // ========== CĂUTARE ȘI FILTRE ==========
 
   /// Placeholder pentru bara de căutare
@@ -89,6 +108,15 @@ class AppStrings {
 
   /// Unitate de măsură pentru timp (minute)
   static const timeUnit = 'min';
+
+  // ========== ALERGENI ==========
+
+  /// Titlul secțiunii de alergeni în detalii rețetă
+  static const allergensTitle = 'Alergeni';
+
+  /// Mesaj când rețeta nu conține alergeni comuni
+  static const noAllergens = 'Fără alergeni comuni';
+
   // ========== SHARE (PARTAJARE) ==========
 
   /// Text buton pentru partajare

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'common/strings.dart';
-import 'screens/welcome_screen.dart';
+import 'screens/intro_screen.dart';
 
 /// Punctul de intrare al aplicației.
 void main() {
@@ -8,6 +8,7 @@ void main() {
 }
 
 /// Widget-ul rădăcină.
+/// Definește tema globală și ecranul de pornire.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -25,7 +26,9 @@ class MyApp extends StatelessWidget {
           elevation: 2,
         ),
       ),
-      home: const WelcomeScreen(),
+      // Ecranul de pornire este acum IntroScreen
+      // IntroScreen va naviga singur la WelcomeScreen
+      home: const IntroScreen(),
     );
   }
 }

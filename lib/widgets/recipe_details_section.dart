@@ -4,8 +4,9 @@ import '../providers/favorites_provider.dart';
 import '../common/strings.dart';
 import '../utils/share_helper.dart';
 import '../utils/difficulty_helper.dart';
+import 'allergens_widget.dart'; // import-ul widget-ului nou
 
-/// Secțiune cu toate detaliile rețetei.
+/// Secțiunea cu toate detaliile rețetei.
 class RecipeDetailsSection extends StatefulWidget {
   final Recipe recipe;
 
@@ -44,7 +45,7 @@ class _RecipeDetailsSectionState extends State<RecipeDetailsSection> {
 
             const SizedBox(height: 16),
 
-            /// BUTOANE
+            /// BUTOANE (Favorite + Share)
             _ActionButtons(
               isFavorite: isFavorite,
               recipe: widget.recipe,
@@ -65,11 +66,16 @@ class _RecipeDetailsSectionState extends State<RecipeDetailsSection> {
 
             const SizedBox(height: 24),
 
-            /// INFO
+            /// INFO (Timp + Dificultate)
             _InfoRow(
               time: widget.recipe.time,
               difficulty: widget.recipe.difficulty,
             ),
+
+            const SizedBox(height: 24),
+
+            /// ALERGENI — chemat din widget separat
+            AllergensWidget(allergens: widget.recipe.allergens),
 
             const SizedBox(height: 28),
 
@@ -82,7 +88,7 @@ class _RecipeDetailsSectionState extends State<RecipeDetailsSection> {
 
             const SizedBox(height: 28),
 
-            /// PAȘI
+            /// PAȘI DE PREPARARE
             _StepsSection(steps: widget.recipe.steps),
           ],
         ),
@@ -90,6 +96,7 @@ class _RecipeDetailsSectionState extends State<RecipeDetailsSection> {
     );
   }
 
+  /// Toggle favorite și refresh UI.
   Future<void> _toggleFavorite() async {
     await favorites.toggleFavorite(widget.recipe);
     setState(() {});
@@ -151,7 +158,7 @@ class _ActionButtons extends StatelessWidget {
     );
   }
 
-  /// Afișează opțiunile de partajare într-un bottom sheet.
+  /// Bottom sheet cu opțiunile de partajare.
   void _showShareOptions(BuildContext context, Recipe recipe) {
     showModalBottomSheet(
       context: context,
@@ -199,7 +206,7 @@ class _ActionButtons extends StatelessWidget {
   }
 }
 
-/// Rândul cu informații despre timp și dificultate.
+/// Rândul cu Timp și Dificultate.
 class _InfoRow extends StatelessWidget {
   final int time;
   final String difficulty;
@@ -229,7 +236,7 @@ class _InfoRow extends StatelessWidget {
   }
 }
 
-/// Chip pentru afișarea unei informații cu iconiță.
+/// Chip mic cu iconiță și text.
 class _InfoChip extends StatelessWidget {
   final IconData icon;
   final String text;
@@ -267,7 +274,7 @@ class _InfoChip extends StatelessWidget {
   }
 }
 
-/// Secțiunea cu ingrediente.
+/// Secțiunea ingrediente cu toggle show/hide.
 class _IngredientsSection extends StatelessWidget {
   final List<String> ingredients;
   final bool showIngredients;
@@ -315,10 +322,7 @@ class _IngredientsSection extends StatelessWidget {
                     const Icon(Icons.check_circle, color: Colors.orange, size: 20),
                     const SizedBox(width: 10),
                     Expanded(
-                      child: Text(
-                        ing,
-                        style: const TextStyle(fontSize: 15),
-                      ),
+                      child: Text(ing, style: const TextStyle(fontSize: 15)),
                     ),
                   ],
                 ),
@@ -331,7 +335,7 @@ class _IngredientsSection extends StatelessWidget {
   }
 }
 
-/// Secțiunea cu pașii rețetei.
+/// Secțiunea pași de preparare numerotați.
 class _StepsSection extends StatelessWidget {
   final List<String> steps;
 

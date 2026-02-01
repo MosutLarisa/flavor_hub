@@ -37,6 +37,7 @@ final recipes = <Recipe>[
       'Coace blatul 40–45 de minute.',
       'Lasă blatul să se răcească înainte de decorare.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
   Recipe(
     title: 'Pizza Margherita',
@@ -66,6 +67,7 @@ final recipes = <Recipe>[
       'Coace la 220°C timp de 12–15 minute.',
       'Decorează cu busuioc proaspăt.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -90,6 +92,7 @@ final recipes = <Recipe>[
       'Amestecă pastele fierbinți cu baconul și sosul de ou.',
       'Servește imediat.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -115,6 +118,7 @@ final recipes = <Recipe>[
       'Adaugă brânza peste carne.',
       'Asamblează burgerul cu salată și roșii.',
     ],
+    allergens: ['Gluten', 'Lapte'],
   ),
 
   Recipe(
@@ -139,6 +143,7 @@ final recipes = <Recipe>[
       'Adaugă supa treptat, amestecând.',
       'La final, încorporează parmezanul.',
     ],
+    allergens: ['Gluten', 'Lapte'],
   ),
 
   Recipe(
@@ -163,6 +168,7 @@ final recipes = <Recipe>[
       'Adaugă mozzarella deasupra.',
       'Coace la 180°C timp de 45 de minute.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
   Recipe(
     title: 'Piept de pui la grătar',
@@ -186,6 +192,7 @@ final recipes = <Recipe>[
       'Gătește puiul 5–6 minute pe fiecare parte.',
       'Lasă-l să se odihnească 2 minute înainte de servire.',
     ],
+    allergens: [],
   ),
 
   Recipe(
@@ -209,6 +216,7 @@ final recipes = <Recipe>[
       'Coace la 200°C timp de 35–40 de minute.',
       'Întoarce cartofii la jumătatea timpului.',
     ],
+    allergens: [],
   ),
 
   Recipe(
@@ -234,6 +242,7 @@ final recipes = <Recipe>[
       'Toarnă ouăle peste legume.',
       'Adaugă brânza și gătește până se încheagă.',
     ],
+    allergens: ['Ouă', 'Lapte'],
   ),
 
   Recipe(
@@ -257,6 +266,7 @@ final recipes = <Recipe>[
       'Pliază tortilla.',
       'Rumenește pe ambele părți.',
     ],
+    allergens: ['Gluten', 'Lapte'],
   ),
 
   Recipe(
@@ -281,6 +291,7 @@ final recipes = <Recipe>[
       'Potrivește de sare și piper.',
       'Servește cu crutoane.',
     ],
+    allergens: [],
   ),
 
   Recipe(
@@ -305,6 +316,7 @@ final recipes = <Recipe>[
       'Coace la 180°C timp de 20–25 minute.',
       'Servește cu garnitură.',
     ],
+    allergens: ['Pește'],
   ),
   Recipe(
     title: 'Pancakes',
@@ -328,6 +340,7 @@ final recipes = <Recipe>[
       'Coace clătitele într-o tigaie încinsă.',
       'Servește cu umplutura preferată.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -352,6 +365,7 @@ final recipes = <Recipe>[
       'Adaugă făina și cacaoa.',
       'Coace la 180°C timp de 30 de minute.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -376,6 +390,7 @@ final recipes = <Recipe>[
       'Adaugă ouăle și vanilia.',
       'Coace la 160°C timp de 50–55 minute.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -400,6 +415,7 @@ final recipes = <Recipe>[
       'Lasă aluatul la dospit.',
       'Prăjește gogoșile până devin aurii.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -423,6 +439,7 @@ final recipes = <Recipe>[
       'Toarnă compoziția într-o tavă.',
       'Coace la 180°C timp de 30 de minute.',
     ],
+    allergens: ['Gluten', 'Ouă'],
   ),
 
   Recipe(
@@ -447,6 +464,7 @@ final recipes = <Recipe>[
       'Înmoaie pișcoturile în cafea.',
       'Asamblează straturi și presară cacao.',
     ],
+    allergens: ['Lapte', 'Ouă', 'Gluten'],
   ),
 
   Recipe(
@@ -471,6 +489,7 @@ final recipes = <Recipe>[
       'Adaugă afinele.',
       'Coace la 180°C timp de 20–25 minute.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -494,6 +513,7 @@ final recipes = <Recipe>[
       'Ia de pe foc.',
       'Presară scorțișoară înainte de servire.',
     ],
+    allergens: ['Lapte'],
   ),
 
   Recipe(
@@ -518,6 +538,7 @@ final recipes = <Recipe>[
       'Așază umplutura peste aluat.',
       'Coace la 180°C timp de 40–45 minute.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -541,6 +562,7 @@ final recipes = <Recipe>[
       'Toarnă în forme.',
       'Lasă la frigider minimum 4 ore.',
     ],
+    allergens: ['Lapte'],
   ),
   Recipe(
     title: 'Tocăniță de pui',
@@ -565,6 +587,7 @@ final recipes = <Recipe>[
       'Pune sosul de roșii și condimentele.',
       'Fierbe la foc mic 30 de minute.',
     ],
+    allergens: [],
   ),
 
   Recipe(
@@ -588,6 +611,7 @@ final recipes = <Recipe>[
       'Adaugă puiul și crutoanele.',
       'Presară parmezan.',
     ],
+    allergens: ['Lapte', 'Ouă', 'Gluten'],
   ),
 
   Recipe(
@@ -613,6 +637,7 @@ final recipes = <Recipe>[
       'Prăjește-le în ulei încins.',
       'Scoate-le pe șervețel.',
     ],
+    allergens: ['Gluten', 'Ouă'],
   ),
 
   Recipe(
@@ -637,6 +662,7 @@ final recipes = <Recipe>[
       'Amestecă bine.',
       'Potrivește de sare.',
     ],
+    allergens: ['Gluten'],
   ),
 
   Recipe(
@@ -661,6 +687,7 @@ final recipes = <Recipe>[
       'Rulează clătitele.',
       'Servește cald.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -685,6 +712,7 @@ final recipes = <Recipe>[
       'Gătește pe grătar.',
       'Servește cald.',
     ],
+    allergens: [],
   ),
 
   Recipe(
@@ -708,6 +736,7 @@ final recipes = <Recipe>[
       'Amestecă pastele cu sosul.',
       'Servește cald.',
     ],
+    allergens: ['Gluten', 'Lapte'],
   ),
 
   Recipe(
@@ -732,6 +761,7 @@ final recipes = <Recipe>[
       'Acrește cu borș.',
       'Lasă să fiarbă.',
     ],
+    allergens: ['Gluten'],
   ),
 
   Recipe(
@@ -754,6 +784,7 @@ final recipes = <Recipe>[
       'Rumenește în tigaie.',
       'Servește cald.',
     ],
+    allergens: ['Gluten', 'Lapte'],
   ),
 
   Recipe(
@@ -777,6 +808,7 @@ final recipes = <Recipe>[
       'Prepară ouăle.',
       'Servește împreună.',
     ],
+    allergens: ['Ouă'],
   ),
 
   Recipe(
@@ -801,6 +833,7 @@ final recipes = <Recipe>[
       'Încălzește aparatul de vafe.',
       'Coace vafele până devin aurii.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -824,6 +857,7 @@ final recipes = <Recipe>[
       'Formează biscuiți.',
       'Coace la 180°C timp de 15–18 minute.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -848,6 +882,7 @@ final recipes = <Recipe>[
       'Toarnă în tavă.',
       'Coace la 180°C timp de 30–35 minute.',
     ],
+    allergens: ['Gluten', 'Ouă'],
   ),
 
   Recipe(
@@ -870,6 +905,7 @@ final recipes = <Recipe>[
       'Unge cu gem.',
       'Rulează cu grijă.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -894,6 +930,7 @@ final recipes = <Recipe>[
       'Toarnă în tavă.',
       'Coace la 180°C timp de 35–40 minute.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -917,6 +954,7 @@ final recipes = <Recipe>[
       'Amestecă totul.',
       'Servește cald sau rece.',
     ],
+    allergens: ['Lapte'],
   ),
 
   Recipe(
@@ -941,6 +979,7 @@ final recipes = <Recipe>[
       'Toarnă în forme.',
       'Coace la 180°C timp de 20 minute.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 
   Recipe(
@@ -964,6 +1003,7 @@ final recipes = <Recipe>[
       'Amestecă cu biscuiții.',
       'Formează și răcește.',
     ],
+    allergens: ['Gluten', 'Lapte'],
   ),
 
   Recipe(
@@ -985,6 +1025,7 @@ final recipes = <Recipe>[
       'Toarnă în recipient.',
       'Lasă la congelator 4 ore.',
     ],
+    allergens: ['Lapte'],
   ),
 
   Recipe(
@@ -1009,5 +1050,6 @@ final recipes = <Recipe>[
       'Toarnă în tavă.',
       'Coace la 180°C timp de 30–35 minute.',
     ],
+    allergens: ['Gluten', 'Lapte', 'Ouă'],
   ),
 ];

@@ -1,7 +1,7 @@
 /// Model pentru o rețetă culinară.
 ///
 /// Reprezintă structura de date pentru o rețetă completă.
-/// Include toate informațiile necesare: titlu, imagine, ingrediente, pași, etc.
+/// Include toate informațiile necesare: titlu, imagine, ingrediente, pași, alergeni, etc.
 ///
 /// **De ce folosim o clasă și nu un Map?**
 /// - Siguranță la compilare (erorile se descoperă înainte de rulare)
@@ -26,11 +26,16 @@ class Recipe {
   /// Lista de ingrediente necesare
   final List<String> ingredients;
 
-  /// Pașii de preparare (listă ordonată)
+  /// Pașii de preparare (liste ordonată)
   final List<String> steps;
 
   /// Categoria rețetei (dulce sau sărat)
   final RecipeCategory category;
+
+  /// Lista de alergeni conținuți în rețetă.
+  /// Ex: ['Gluten', 'Lapte', 'Ouă']
+  /// Dacă rețeta nu conține alergeni comuni, lista este goală.
+  final List<String> allergens;
 
   /// Constructor: toate câmpurile sunt obligatorii (required)
   Recipe({
@@ -42,13 +47,14 @@ class Recipe {
     required this.ingredients,
     required this.steps,
     required this.category,
+    required this.allergens,
   });
 }
 
 /// Enum pentru categoriile de rețete.
 ///
 /// **Ce este un Enum?**
-/// O listă fixă de valori posibile. Avem doar 2 categorii:
+/// O liste fixă de valori posibile. Avem doar 2 categorii:
 /// - dulce: pentru deserturi
 /// - sarat: pentru mâncăruri
 ///
