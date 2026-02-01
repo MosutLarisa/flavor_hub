@@ -1,14 +1,8 @@
 import '../models/recipe.dart';
 
 /// Lista completă de rețete din aplicație.
-///
-/// Aceasta este "baza de date" aplicației - o listă hardcodată.
-/// În viitor, poți înlocui cu date de pe un server sau dintr-o bază reală.
-///
-/// **Structură:**
 /// Fiecare rețetă conține toate detaliile necesare pentru afișare.
 final recipes = <Recipe>[
-  // ========== REȚETE DULCI ==========
   Recipe(
     title: 'Tort de ciocolată',
     image: 'assets/images/cake.jpg',

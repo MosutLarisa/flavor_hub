@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// Funcții helper pentru navigare între ecrane.
-///
-/// Centralizează logica de navigare pentru:
-/// - Cod mai curat
-/// - Reutilizabilitate
-/// - Consistență în tranziții
 class NavigationHelper {
-  /// Navighează către un ecran nou.
-  ///
-  /// Parametri:
-  /// - context: Context-ul Flutter
-  /// - screen: Widget-ul ecranului nou
+  // Navighează către un ecran nou.
   static void navigateToScreen(BuildContext context, Widget screen) {
     Navigator.push(
       context,
@@ -19,7 +10,7 @@ class NavigationHelper {
     );
   }
 
-  /// Revine la ecranul anterior.
+  // Revine la ecranul anterior.
   static void goBack(BuildContext context) {
     Navigator.pop(context);
   }

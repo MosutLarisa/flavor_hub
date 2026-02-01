@@ -2,15 +2,8 @@ import 'package:share_plus/share_plus.dart';
 import '../models/recipe.dart';
 
 /// Helper pentru funcționalitatea de share (partajare rețete).
-///
-/// Oferă metode pentru a partaja:
-/// - Rețeta completă
-/// - Doar ingredientele
-/// - Doar pașii
-///
-/// **Cum funcționează:**
-/// Folosește `share_plus` care deschide sheet-ul nativ de partajare.
-/// Utilizatorul poate alege: WhatsApp, Email, Messenger, etc.
+// **Cum funcționează:**
+// Folosește `share_plus` care deschide sheet-ul nativ de partajare.
 class ShareHelper {
   /// Partajează rețeta completă.
   ///
@@ -32,7 +25,7 @@ ${_formatIngredients(recipe.ingredients)}
 ${_formatSteps(recipe.steps)}
 
 ---
-Partajat din FlavorHub 🍳
+Partajat din FlavorHub 🔥
     '''
             .trim();
 
@@ -48,7 +41,7 @@ Partajat din FlavorHub 🍳
 ${_formatIngredients(recipe.ingredients)}
 
 ---
-Partajat din FlavorHub 🍳
+Partajat din FlavorHub 🔥
     '''
             .trim();
 
@@ -64,7 +57,7 @@ Partajat din FlavorHub 🍳
 ${_formatSteps(recipe.steps)}
 
 ---
-Partajat din FlavorHub 🍳
+Partajat din FlavorHub 🔥
     '''
             .trim();
 

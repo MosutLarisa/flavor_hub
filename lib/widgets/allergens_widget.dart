@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import '../common/strings.dart';
 
 /// Widget compact care afișează alergenii unei rețete.
-///
-/// - Lista goală → badge verde mic "Fără alergeni comuni"
-/// - Lista cu elemente → chip-uri mici într-un singur rând (sau wrapat pe 2 linii)
-
 class AllergensWidget extends StatelessWidget {
   final List<String> allergens;
 
@@ -44,8 +40,6 @@ class AllergensWidget extends StatelessWidget {
     );
   }
 }
-
-// ========== WIDGET-URI PRIVATE ==========
 
 /// Badge verde mic pentru rețetele fără alergeni.
 class _NoAllergensBadge extends StatelessWidget {

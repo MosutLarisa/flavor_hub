@@ -1,15 +1,4 @@
-/// Fișier central pentru TOATE textele din interfață.
-///
-/// Conține toate string-urile aplicației organizate pe secțiuni logice:
-/// - Titluri și mesaje generale
-/// - Ecran de pornire (intro)
-/// - Navigare și categorii
-/// - Căutare și filtre
-/// - Detalii rețete (inclusiv alergeni)
-/// - Share și favorite
-///
-/// **Scop:** Evitarea hardcodării textelor direct în widget-uri.
-/// Dacă vrei să modifici un text, îl schimbi doar aici, nu în 10 locuri diferite.
+/// Fișiere cu string-uri constante folosite în aplicație.
 class AppStrings {
   // ========== GENERALE ==========
 

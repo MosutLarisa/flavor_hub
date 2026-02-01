@@ -26,8 +26,7 @@ class MyApp extends StatelessWidget {
           elevation: 2,
         ),
       ),
-      // Ecranul de pornire este acum IntroScreen
-      // IntroScreen va naviga singur la WelcomeScreen
+
       home: const IntroScreen(),
     );
   }

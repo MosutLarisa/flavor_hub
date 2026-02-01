@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// Helper pentru gestionarea dificultăților.
-///
-/// Oferă metode pentru:
-/// - Obținerea culorii asociate unei dificultăți
-/// - Obținerea iconițelor
-///
-/// **Coduri de culori:**
-/// - Ușor: Verde (#4CAF50)
-/// - Mediu: Portocaliu (#FF9800)
-/// - Dificil: Roșu (#F44336)
 class DifficultyHelper {
-  /// Returnează culoarea pentru o dificultate.
+  // Returnează culoarea pentru o dificultate.
   static Color getColor(String difficulty) {
     switch (difficulty) {
       case 'Ușor':

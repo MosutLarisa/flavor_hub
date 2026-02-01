@@ -4,7 +4,7 @@ import '../providers/favorites_provider.dart';
 import '../common/strings.dart';
 import '../utils/share_helper.dart';
 import '../utils/difficulty_helper.dart';
-import 'allergens_widget.dart'; // import-ul widget-ului nou
+import 'allergens_widget.dart';
 
 /// Secțiunea cu toate detaliile rețetei.
 class RecipeDetailsSection extends StatefulWidget {
@@ -102,8 +102,6 @@ class _RecipeDetailsSectionState extends State<RecipeDetailsSection> {
     setState(() {});
   }
 }
-
-// ========== WIDGET-URI PRIVATE ==========
 
 /// Butoane Favorite și Share.
 class _ActionButtons extends StatelessWidget {

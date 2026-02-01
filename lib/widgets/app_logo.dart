@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 /// Logo-ul aplicației – modern, atractiv, cu efect de glow.
-///
 class AppLogo extends StatelessWidget {
   final double size;
 

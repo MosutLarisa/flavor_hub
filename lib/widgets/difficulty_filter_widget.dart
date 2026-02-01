@@ -3,12 +3,6 @@ import '../common/strings.dart';
 import '../utils/difficulty_helper.dart';
 
 /// Widget pentru filtrarea după dificultate.
-///
-/// Afișează 4 chip-uri:
-/// - Toate (resetează filtrul)
-/// - Ușor (verde)
-/// - Mediu (portocaliu)
-/// - Dificil (roșu)
 class DifficultyFilterWidget extends StatelessWidget {
   final String? selectedDifficulty;
   final ValueChanged<String?> onSelected;
@@ -53,9 +47,9 @@ class DifficultyFilterWidget extends StatelessWidget {
   }
 
   /// Construiește un chip pentru filtrul de dificultate.
-  /// [value] - valoarea dificultății (sau null pentru toate)
-  /// [label] - eticheta afișată pe chip
-  /// [color] - culoarea asociată dificultății
+  // [value] - valoarea dificultății (sau null pentru toate)
+  // [label] - eticheta afișată pe chip
+  // [color] - culoarea asociată dificultății
   Widget _buildChip(String? value, String label, Color color) {
     final isSelected = selectedDifficulty == value;
 

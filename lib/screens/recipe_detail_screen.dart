@@ -4,10 +4,6 @@ import '../widgets/recipe_image_header.dart';
 import '../widgets/recipe_details_section.dart';
 
 /// Ecranul cu detaliile complete ale unei rețete.
-///
-/// Structură:
-/// - Header cu imagine
-/// - Secțiune cu detalii (scroll-abilă)
 class RecipeDetailScreen extends StatelessWidget {
   final Recipe recipe;
 

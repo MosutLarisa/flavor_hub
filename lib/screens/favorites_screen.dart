@@ -4,6 +4,8 @@ import '../common/strings.dart';
 import '../providers/favorites_provider.dart';
 import '../widgets/recipe_card.dart';
 
+/// Ecranul de Favorite.
+/// Afișează lista de rețete marcate ca favorite de utilizator.
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
 
@@ -11,14 +13,19 @@ class FavoritesScreen extends StatefulWidget {
   State<FavoritesScreen> createState() => _FavoritesScreenState();
 }
 
+/// State-ul asociat ecranului FavoritesScreen.
 class _FavoritesScreenState extends State<FavoritesScreen> {
+  // Provider responsabil de gestionarea rețetelor favorite
+  // (ex: adăugare, ștergere, citire favorite).
   final favoritesProvider = FavoritesProvider();
 
   @override
   Widget build(BuildContext context) {
+    // Lista de rețete favorite obținută din provider
     final favorites = favoritesProvider.favorites;
 
     return Scaffold(
+      // Bara de sus a ecranului
       appBar: AppBar(
         elevation: 0,
         foregroundColor: Colors.white,
@@ -26,6 +33,8 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           AppStrings.favoritesTitle,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
+
+        // Fundal cu gradient pentru AppBar
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -37,7 +46,10 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           ),
         ),
       ),
+
+      // Corpul ecranului
       body: Container(
+        // Fundal cu gradient deschis
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -48,6 +60,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             end: Alignment.bottomCenter,
           ),
         ),
+
+        // Dacă nu există favorite → afișăm mesaj
+        // Altfel → afișăm lista de rețete favorite
         child: favorites.isEmpty
             ? const _EmptyFavoritesMessage()
             : _FavoritesList(favorites: favorites),
@@ -56,6 +71,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   }
 }
 
+/// Widget afișat atunci când lista de favorite este goală.
 class _EmptyFavoritesMessage extends StatelessWidget {
   const _EmptyFavoritesMessage();
 
@@ -65,6 +81,7 @@ class _EmptyFavoritesMessage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Container circular cu gradient și umbră
           Container(
             width: 120,
             height: 120,
@@ -85,13 +102,18 @@ class _EmptyFavoritesMessage extends StatelessWidget {
                 ),
               ],
             ),
+
+            // Iconiță de inimă (favorite)
             child: const Icon(
               Icons.favorite_border,
               size: 56,
               color: Colors.white,
             ),
           ),
+
           const SizedBox(height: 20),
+
+          // Mesaj text afișat când nu există favorite
           const Text(
             AppStrings.noFavorites,
             textAlign: TextAlign.center,
@@ -106,7 +128,11 @@ class _EmptyFavoritesMessage extends StatelessWidget {
   }
 }
 
+/// Widget care afișează lista de rețete favorite.
+
+// Primește lista de rețete prin constructor.
 class _FavoritesList extends StatelessWidget {
+  /// Lista de rețete favorite
   final List<Recipe> favorites;
 
   const _FavoritesList({required this.favorites});
@@ -114,11 +140,18 @@ class _FavoritesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      // Padding pentru spațiere
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+
+      // Numărul de elemente din listă
       itemCount: favorites.length,
+
+      // Construirea fiecărui element din listă
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 14),
+
+          // Card personalizat pentru afișarea unei rețete
           child: RecipeCard(recipe: favorites[index]),
         );
       },

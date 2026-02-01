@@ -1,12 +1,5 @@
 /// Model pentru o rețetă culinară.
-///
-/// Reprezintă structura de date pentru o rețetă completă.
-/// Include toate informațiile necesare: titlu, imagine, ingrediente, pași, alergeni, etc.
-///
-/// **De ce folosim o clasă și nu un Map?**
-/// - Siguranță la compilare (erorile se descoperă înainte de rulare)
-/// - Autocomplete în IDE
-/// - Cod mai clar și mai ușor de întreținut
+/// Conține toate informațiile necesare pentru afișare și gestionare.
 class Recipe {
   /// Titlul rețetei (ex: "Tort de ciocolată")
   final String title;
@@ -52,15 +45,6 @@ class Recipe {
 }
 
 /// Enum pentru categoriile de rețete.
-///
-/// **Ce este un Enum?**
-/// O liste fixă de valori posibile. Avem doar 2 categorii:
-/// - dulce: pentru deserturi
-/// - sarat: pentru mâncăruri
-///
-/// **Avantaje:**
-/// - Nu poți greși typing-ul (nu poți scrie "dulse" din greșeală)
-/// - IDE-ul îți sugerează valorile posibile
 enum RecipeCategory {
   /// Categoria pentru deserturi și dulciuri
   dulce,
