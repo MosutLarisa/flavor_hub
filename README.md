@@ -131,9 +131,11 @@ lib/
 │   └── share_helper.dart          # Helper partajare
 ├── widgets/
 │   ├── allergens_widget.dart      # Widget alergeni
+│   ├── app_logo.dart              # Logo aplicație
 │   ├── recipe_card.dart           # Card rețetă
 │   ├── recipe_image_header.dart   # Header imagine
 │   ├── recipe_details_section.dart# Detalii complete
+│   ├── recipe_list_widget.dart    # Listă rețete
 │   ├── search_bar_widget.dart     # Bară căutare
 │   └── difficulty_filter_widget.dart # Filtru dificultate
 └── main.dart
